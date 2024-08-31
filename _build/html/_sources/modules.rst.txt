@@ -1,0 +1,169 @@
+Modules
+=======
+
+The `sentinel_segmentation` package is composed of several key modules, each designed to handle different aspects of the segmentation workflow. This documentation provides an overview of these modules, along with their functions and classes.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Package Contents
+
+   sentinel_segmentation/data_loader
+   sentinel_segmentation/download
+   sentinel_segmentation/models
+   sentinel_segmentation/loss_function
+   sentinel_segmentation/training
+   sentinel_segmentation/evaluation
+   sentinel_segmentation/visualization
+   sentinel_segmentation/image_acquisition
+   sentinel_segmentation/image_processing
+
+
+sentinel_segmentation
+---------------------
+
+.. automodule:: sentinel_segmentation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.data_loader
+---------------------------------
+
+.. automodule:: sentinel_segmentation.data_loader.dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.download
+------------------------------
+
+.. automodule:: sentinel_segmentation.download.download_files
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.models
+----------------------------
+
+.. automodule:: sentinel_segmentation.models.Deeplabv3plus_resnet50
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.models.unet_resnet34
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.models.unet_resnet50
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.models.unetplusplus_resnet50
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.loss_function
+-----------------------------------
+
+.. automodule:: sentinel_segmentation.loss_function.losses
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.training
+------------------------------
+
+.. automodule:: sentinel_segmentation.training.train
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.evaluation
+--------------------------------
+
+.. automodule:: sentinel_segmentation.evaluation.evaluate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.evaluation.metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.evaluation.show_prediction
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.visualization
+-----------------------------------
+
+.. automodule:: sentinel_segmentation.visualization.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.visualization.image_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.visualization.map_visualization
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.visualization.load_image
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.image_acquisition
+---------------------------------------
+
+.. automodule:: sentinel_segmentation.image_acquisition.earth_engine
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+sentinel_segmentation.image_processing
+--------------------------------------
+
+.. automodule:: sentinel_segmentation.image_processing.tiff_conversion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.image_processing.tiff_to_jpg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.image_processing.image_resize
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.image_processing.image_fusion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: sentinel_segmentation.image_processing.data_split
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

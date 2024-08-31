@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_03d9c7e88016b381aeb302af6e29d344 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 220px; height: auto; 
+            border:2px solid grey; z-index:9999; font-size:12px;
+            background-color:white;
+            opacity: 0.8;
+            padding: 5px 10px; margin: 0;">
+<h4 style="margin-top: 0; margin-bottom: 5px;">Status Legend</h4>
+<i style="background-color: gray; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Existing<br>
+<i style="background-color: red; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Non-existent<br>
+<i style="background-color: orange; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Newly Constructed<br>
+<i style="background-color: black; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Demolished<br>
+<i style="background-color: blue; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Continuously Expanding<br>
+<i style="background-color: purple; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Expansion Completed<br>
+<i style="background-color: #008080; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Under Construction<br>
+<i style="background-color: green; width: 12px; height: 12px; display: inline-block; margin-right: 5px;"></i> Construction Completed<br>
+
+<h4 style="margin-top: 10px; margin-bottom: 5px;">Location Types</h4>
+<svg width="12" height="12" style="margin-right: 5px;"><circle cx="6" cy="6" r="6" fill="black" stroke="black" stroke-width="2"></circle></svg> Harbor (Fully Filled)<br>
+<svg width="12" height="12" style="margin-right: 5px;"><circle cx="6" cy="6" r="6" fill="black" fill-opacity="0.5" stroke="black" stroke-width="2"></circle></svg> Jetty (Half Filled)<br>
+<svg width="12" height="12" style="margin-right: 5px;"><circle cx="6" cy="6" r="6" fill="none" stroke="black" stroke-width="2"></circle></svg> Resort (No Fill)<br>
+</div>
+    
+            <div class="folium-map" id="map_03d9c7e88016b381aeb302af6e29d344" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_03d9c7e88016b381aeb302af6e29d344 = L.map(
+                "map_03d9c7e88016b381aeb302af6e29d344",
+                {
+                    center: [-0.6512981423916291, 73.16206824680717],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_78238138ac135c004ed1e785b27b105d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_78238138ac135c004ed1e785b27b105d.addTo(map_03d9c7e88016b381aeb302af6e29d344);
+        
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD");
+                }
+            });
+            map_03d9c7e88016b381aeb302af6e29d344.timeDimension = L.timeDimension(
+                {
+                    period: "P1M",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
+                {"autoPlay": false, "loopButton": true, "maxSpeed": 1, "minSpeed": 0.1, "playerOptions": {"loop": false, "startOver": true, "transitionTime": 200}, "position": "bottomleft", "speedSlider": true, "timeSliderDragUpdate": true}
+            );
+            map_03d9c7e88016b381aeb302af6e29d344.addControl(this.timeDimensionControl);
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2223548026906, -0.584639542600897]}, "properties": {"times": ["2015-09-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2015.09-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.221286, -0.590856]}, "properties": {"times": ["2015-12-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2015.12-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.189905470852, -0.683373677130045]}, "properties": {"times": ["2015-12-01", "2024-08-01"], "popup": "Label: resort<br>Status: existing<br>Date: 2015.12-2024.08", "style": {"radius": 5, "fillOpacity": 0, "fillColor": null, "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2015-12-01", "2017-01-01"], "popup": "Label: harbor<br>Status: non-existent<br>Date: 2015.12-2017.01", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "red", "stroke": true, "color": "red", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.118511769, -0.66470546]}, "properties": {"times": ["2016-01-01", "2018-12-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2016.01-2018.12", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.13699009, -0.6792791]}, "properties": {"times": ["2016-02-01", "2022-06-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2016.02-2022.06", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2016-03-01", "2017-05-01"], "popup": "Label: harbor<br>Status: non-existent<br>Date: 2016.03-2017.05", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "red", "stroke": true, "color": "red", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.1596226412556, -0.688820524663677]}, "properties": {"times": ["2016-05-01", "2023-07-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2016.05-2023.07", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2017-02-01", "2017-02-01"], "popup": "Label: harbor<br>Status: newly constructed<br>Date: 2017.02", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "orange", "stroke": true, "color": "orange", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2017-03-01", "2017-03-01"], "popup": "Label: harbor<br>Status: demolished<br>Date: 2017.03", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "black", "stroke": true, "color": "black", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2017-03-01", "2019-02-01"], "popup": "Label: harbor<br>Status: non-existent<br>Date: 2017.03-2019.02", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "red", "stroke": true, "color": "red", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2017-06-01", "2017-09-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2017.06-2017.09", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2017-06-01", "2017-06-01"], "popup": "Label: harbor<br>Status: newly constructed<br>Date: 2017.06", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "orange", "stroke": true, "color": "orange", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2017-10-01", "2018-04-01"], "popup": "Label: harbor<br>Status: continuously expanding<br>Date: 2017.10-2018.04", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "blue", "stroke": true, "color": "blue", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2018-04-01", "2020-01-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2018.04-2020.01", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2018-04-01", "2018-04-01"], "popup": "Label: harbor<br>Status: expansion completed<br>Date: 2018.04", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "purple", "stroke": true, "color": "purple", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.118511769, -0.66470546]}, "properties": {"times": ["2018-12-01", "2020-03-01"], "popup": "Label: harbor<br>Status: continuously expanding<br>Date: 2018.12-2020.03", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "blue", "stroke": true, "color": "blue", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2019-03-01", "2019-04-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2019.03-2019.04", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2019-04-01", "2019-04-01"], "popup": "Label: harbor<br>Status: demolished<br>Date: 2019.04", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "black", "stroke": true, "color": "black", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2019-04-01", "2019-09-01"], "popup": "Label: harbor<br>Status: non-existent<br>Date: 2019.04-2019.09", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "red", "stroke": true, "color": "red", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2019-11-01", "2022-02-01"], "popup": "Label: harbor<br>Status: under construction<br>Date: 2019.11-2022.02", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "#008080", "stroke": true, "color": "#008080", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2020-02-01", "2022-04-01"], "popup": "Label: harbor<br>Status: continuously expanding<br>Date: 2020.02-2022.04", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "blue", "stroke": true, "color": "blue", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.118511769, -0.66470546]}, "properties": {"times": ["2020-03-01", "2020-03-01"], "popup": "Label: harbor<br>Status: expansion completed<br>Date: 2020.03", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "purple", "stroke": true, "color": "purple", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.118511769, -0.66470546]}, "properties": {"times": ["2020-04-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2020.04-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2022-02-01", "2022-02-01"], "popup": "Label: harbor<br>Status: construction completed<br>Date: 2022.02", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "green", "stroke": true, "color": "green", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.126626, -0.67114]}, "properties": {"times": ["2022-03-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2022.03-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2022-04-01", "2022-04-01"], "popup": "Label: harbor<br>Status: expansion completed<br>Date: 2022.04", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "purple", "stroke": true, "color": "purple", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.2222413811659, -0.598520596412556]}, "properties": {"times": ["2022-05-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2022.05-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.13699009, -0.6792791]}, "properties": {"times": ["2022-06-01", "2023-03-01"], "popup": "Label: harbor<br>Status: continuously expanding<br>Date: 2022.06-2023.03", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "blue", "stroke": true, "color": "blue", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.13699009, -0.6792791]}, "properties": {"times": ["2023-03-01", "2023-03-01"], "popup": "Label: harbor<br>Status: expansion completed<br>Date: 2023.03", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "purple", "stroke": true, "color": "purple", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.13699009, -0.6792791]}, "properties": {"times": ["2023-03-01", "2023-07-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2023.03-2023.07", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.1596226412556, -0.688820524663677]}, "properties": {"times": ["2023-07-01", "2024-01-01"], "popup": "Label: harbor<br>Status: continuously expanding<br>Date: 2023.07-2024.01", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "blue", "stroke": true, "color": "blue", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.13699009, -0.6792791]}, "properties": {"times": ["2023-08-01", "2024-03-01"], "popup": "Label: harbor<br>Status: continuously expanding<br>Date: 2023.08-2024.03", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "blue", "stroke": true, "color": "blue", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.1596226412556, -0.688820524663677]}, "properties": {"times": ["2024-01-01", "2024-01-01"], "popup": "Label: harbor<br>Status: expansion completed<br>Date: 2024.01", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "purple", "stroke": true, "color": "purple", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.1596226412556, -0.688820524663677]}, "properties": {"times": ["2024-02-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2024.02-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [73.13699009, -0.6792791]}, "properties": {"times": ["2024-04-01", "2024-08-01"], "popup": "Label: harbor<br>Status: existing<br>Date: 2024.04-2024.08", "style": {"radius": 7, "fillOpacity": 1, "fillColor": "gray", "stroke": true, "color": "gray", "weight": 2}, "icon": "circle"}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                        if (feature.properties.tooltip) {
+                        layer.bindTooltip(feature.properties.tooltip);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_673f97a12a3b081bb906f8e8fe37d7f5 = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
+                {
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: undefined,
+                }
+            ).addTo(map_03d9c7e88016b381aeb302af6e29d344);
+        
+</script>
+</html>

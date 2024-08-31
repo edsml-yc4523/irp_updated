@@ -1,0 +1,20 @@
+.. Sentinel Segmentation documentation master file
+
+Welcome to Sentinel Segmentation's documentation!
+==================================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   introduction
+   installation
+   quickstart
+   modules
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

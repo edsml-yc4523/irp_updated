@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; Sentinel Segmentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to Sentinel Segmentation’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sentinel Segmentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#prerequisites">1. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-using-pip">2. Installation Using <cite>pip</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#prepare-your-dataset">1. Prepare your dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#model-training-and-evaluation">2. Model training and evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#model-inference">3. Model inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#folium-visualization">4. Folium visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-sentinel_segmentation">sentinel_segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#sentinel-segmentation-data-loader">sentinel_segmentation.data_loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-sentinel_segmentation.download.download_files">sentinel_segmentation.download</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.download.download_files.authenticate_gdrive"><code class="docutils literal notranslate"><span class="pre">authenticate_gdrive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.download.download_files.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.download.download_files.download_folder"><code class="docutils literal notranslate"><span class="pre">download_folder()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-sentinel_segmentation.models.Deeplabv3plus_resnet50">sentinel_segmentation.models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout"><code class="docutils literal notranslate"><span class="pre">DeepLabV3Plus_resnet50WithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout.forward"><code class="docutils literal notranslate"><span class="pre">DeepLabV3Plus_resnet50WithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout"><code class="docutils literal notranslate"><span class="pre">UnetResnet34WithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout.forward"><code class="docutils literal notranslate"><span class="pre">UnetResnet34WithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.models.unet_resnet50.UnetWithDropout"><code class="docutils literal notranslate"><span class="pre">UnetWithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.models.unet_resnet50.UnetWithDropout.forward"><code class="docutils literal notranslate"><span class="pre">UnetWithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout"><code class="docutils literal notranslate"><span class="pre">UnetPlusPlusResnet50WithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout.forward"><code class="docutils literal notranslate"><span class="pre">UnetPlusPlusResnet50WithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-sentinel_segmentation.loss_function.losses">sentinel_segmentation.loss_function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.loss_function.losses.CombinedLoss"><code class="docutils literal notranslate"><span class="pre">CombinedLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.loss_function.losses.CombinedLoss.forward"><code class="docutils literal notranslate"><span class="pre">CombinedLoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.loss_function.losses.DiceLoss"><code class="docutils literal notranslate"><span class="pre">DiceLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.loss_function.losses.DiceLoss.forward"><code class="docutils literal notranslate"><span class="pre">DiceLoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.loss_function.losses.FocalLoss"><code class="docutils literal notranslate"><span class="pre">FocalLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules.html#sentinel_segmentation.loss_function.losses.FocalLoss.forward"><code class="docutils literal notranslate"><span class="pre">FocalLoss.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#sentinel-segmentation-training">sentinel_segmentation.training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#sentinel-segmentation-evaluation">sentinel_segmentation.evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#sentinel-segmentation-visualization">sentinel_segmentation.visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-sentinel_segmentation.image_acquisition.earth_engine">sentinel_segmentation.image_acquisition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.image_acquisition.earth_engine.export_images"><code class="docutils literal notranslate"><span class="pre">export_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.image_acquisition.earth_engine.get_images"><code class="docutils literal notranslate"><span class="pre">get_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.html#sentinel_segmentation.image_acquisition.earth_engine.initialize_earth_engine"><code class="docutils literal notranslate"><span class="pre">initialize_earth_engine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#sentinel-segmentation-image-processing">sentinel_segmentation.image_processing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sentinel Segmentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p><strong>Sentinel Segmentation</strong> is a Python package specifically designed for segmenting coastal infrastructure, such as harbours, jetties, and resorts, from Sentinel-2 remote sensing images using deep learning models with PyTorch.</p>
+<p>This package provides tools for:</p>
+<ul class="simple">
+<li><p><strong>Data Processing</strong>: Efficiently handle and preprocess Sentinel-2 remote sensing images, preparing them for model training and inference.</p></li>
+<li><p><strong>Model Training</strong>: Train state-of-the-art deep learning models for segmentation tasks, with built-in support for architectures like U-Net, DeepLabV3+, and U-Net++.</p></li>
+<li><p><strong>Evaluation</strong>: Assess model performance using a variety of metrics, and visualize results to ensure accuracy and reliability.</p></li>
+<li><p><strong>Visualization</strong>: Generate interactive map visualizations using Folium, making it easier to interpret and present segmentation results.</p></li>
+</ul>
+<p>Sentinel Segmentation simplifies the process for researchers and developers to build, fine-tune, and deploy segmentation models tailored to the unique challenges of analyzing coastal environments.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Sentinel Segmentation’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yibing Chen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

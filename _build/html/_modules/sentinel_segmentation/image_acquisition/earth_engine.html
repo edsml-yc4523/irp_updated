@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sentinel_segmentation.image_acquisition.earth_engine &mdash; Sentinel Segmentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Sentinel Segmentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Sentinel Segmentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">sentinel_segmentation.image_acquisition.earth_engine</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for sentinel_segmentation.image_acquisition.earth_engine</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Author: Yibing Chen</span>
+<span class="sd">GitHub username: edsml-yc4523</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">ee</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<div class="viewcode-block" id="initialize_earth_engine">
+<a class="viewcode-back" href="../../../modules.html#sentinel_segmentation.image_acquisition.earth_engine.initialize_earth_engine">[docs]</a>
+<span class="k">def</span> <span class="nf">initialize_earth_engine</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize the Google Earth Engine.</span>
+
+<span class="sd">    Attempts to authenticate and initialize the Earth Engine. If</span>
+<span class="sd">    initialization fails, an exception is raised.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
+        <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Earth Engine was not initialized.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">e</span></div>
+
+
+
+<div class="viewcode-block" id="get_images">
+<a class="viewcode-back" href="../../../modules.html#sentinel_segmentation.image_acquisition.earth_engine.get_images">[docs]</a>
+<span class="k">def</span> <span class="nf">get_images</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span>
+               <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2014-01-01&quot;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2024-05-31&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a collection of satellite images from the Sentinel-2 dataset.</span>
+
+<span class="sd">    Filters images based on the specified geographic region, date range,</span>
+<span class="sd">    and cloud cover percentage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat1 (float): Latitude of the first corner of the bounding box.</span>
+<span class="sd">        lon1 (float): Longitude of the first corner of the bounding box.</span>
+<span class="sd">        lat2 (float): Latitude of the opposite corner of the bounding box.</span>
+<span class="sd">        lon2 (float): Longitude of the opposite corner of the bounding box.</span>
+<span class="sd">        start_date (str): Start date for the image collection (YYYY-MM-DD).</span>
+<span class="sd">        end_date (str): End date for the image collection (YYYY-MM-DD).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ee.ImageCollection: Processed image collection containing selected</span>
+<span class="sd">        bands and additional computed indices (NDVI, NDWI).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rectangle</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">])</span>
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_HARMONIZED&quot;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+        <span class="n">selected_bands</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B8&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">toFloat</span><span class="p">()</span>
+        <span class="n">ndvi</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B8&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDVI&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toFloat</span><span class="p">()</span>
+        <span class="n">ndwi</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B8&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDWI&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toFloat</span><span class="p">()</span>
+        <span class="n">combined_image</span> <span class="o">=</span> <span class="n">selected_bands</span><span class="o">.</span><span class="n">addBands</span><span class="p">([</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">ndwi</span><span class="p">])</span>
+        <span class="n">clipped_image</span> <span class="o">=</span> <span class="n">combined_image</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">clipped_image</span>
+
+    <span class="n">processed_collection</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">process_image</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">processed_collection</span></div>
+
+
+
+<div class="viewcode-block" id="export_images">
+<a class="viewcode-back" href="../../../modules.html#sentinel_segmentation.image_acquisition.earth_engine.export_images">[docs]</a>
+<span class="k">def</span> <span class="nf">export_images</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">folder_name</span><span class="p">,</span>
+                  <span class="n">area_name</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Export images from an Earth Engine image collection to Google Drive.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        collection (ee.ImageCollection): The image collection to export.</span>
+<span class="sd">        region (ee.Geometry): The region of interest for image export.</span>
+<span class="sd">        folder_name (str): The name of the folder in Google Drive to save</span>
+<span class="sd">        the images.</span>
+<span class="sd">        area_name (str): A prefix for the exported image file names.</span>
+<span class="sd">        scale (int): The scale in meters for export resolution. Defaults to 10.</span>
+<span class="sd">        batch_size (int): Number of images to export in a batch. Defaults to 20.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total images to export: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">images_list</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">toList</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">batch_size</span> <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">batch_size</span> <span class="o">&lt;</span> <span class="n">count</span> <span class="k">else</span> <span class="n">count</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">images_list</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;YYYY-MM-dd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folder_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">area_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">file_name_prefix</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">area_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">full_folder_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Images_for_detection/</span><span class="si">{</span><span class="n">folder_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">export_params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">description</span><span class="p">,</span>
+                <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="n">scale</span><span class="p">,</span>
+                <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="n">region</span><span class="p">,</span>
+                <span class="s1">&#39;folder&#39;</span><span class="p">:</span> <span class="n">full_folder_name</span><span class="p">,</span>
+                <span class="s1">&#39;fileNamePrefix&#39;</span><span class="p">:</span> <span class="n">file_name_prefix</span><span class="p">,</span>
+                <span class="s1">&#39;fileFormat&#39;</span><span class="p">:</span> <span class="s1">&#39;GeoTIFF&#39;</span>
+            <span class="p">}</span>
+
+            <span class="n">task</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">Export</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">toDrive</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">**</span><span class="n">export_params</span><span class="p">)</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Started export task </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2"> in folder </span><span class="si">{</span><span class="n">full_folder_name</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yibing Chen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

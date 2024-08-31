@@ -1,0 +1,60 @@
+Quick start
+===========
+
+Here's how you can quickly get started with training a model using `sentinel_segmentation`:
+
+1. Prepare your dataset
+------------------------
+
+Ensure your dataset is organized as described above. You can also use my dataset to get started quickly. Use the following code to download the Sentinel-2 dataset of this project:
+
+.. code-block:: python
+
+   from sentinel_segmentation.download import authenticate_gdrive, download_folder
+
+   # Paths to credentials and token
+   credentials_path = "../config/credentials.json"
+   token_path = "../config/token.json"
+
+   # Google Drive folder ID for the dataset
+   folder_id = '16Nxdb45-A6DEh5_cKQVO2OuXc7msD6xG'  
+   destination = './downloads/dataset'  
+
+   # Authenticate and download the dataset
+   service = authenticate_gdrive(credentials_path, token_path)
+   download_folder(service, folder_id, destination)
+
+2. Model training and evaluation
+--------------------------------
+
+This section outlines the steps to train and evaluate a segmentation model using the `sentinel_segmentation` package. If you don’t want to train a model from scratch, you can download a pre-trained model using this code:
+
+.. code-block:: python
+
+   from sentinel_segmentation.download import authenticate_gdrive, download_folder
+
+   # Paths to credentials and token
+   credentials_path = "../config/credentials.json"
+   token_path = "../config/token.json"
+
+   # Google Drive folder ID for the pretrained models
+   folder_id = '1_rdSK2WrTDIja-VAJmi3BHQw3KPhNmhO'  
+   destination = './downloads'  
+
+   # Authenticate and download the pretrained models
+   service = authenticate_gdrive(credentials_path, token_path)
+   download_folder(service, folder_id, destination)
+
+For a detailed implementation, refer to the `UnetPlusPlus_ResNet50.ipynb <https://github.com/edsml-yc4523/irp_updated/blob/main/notebook/UnetPlusPlus_ResNet_50.ipynb>`_.
+
+3. Model inference
+------------------
+
+This notebook shows how to use the `sentinel_segmentation` for change detection. For a detailed implementation, refer to the `model_inference.ipynb <https://github.com/edsml-yc4523/irp_updated/blob/main/notebook/model_inference.ipynb>`_. The data used in this notebook can be seen in the `example/change_detection <https://github.com/edsml-yc4523/irp_updated/blob/main/example/change_detection>`_ folder.
+
+4. Folium visualization
+------------------------
+
+This notebook shows how to use the `sentinel_segmentation` to extract information from the mask and make the map through folium. For a detailed implementation, refer to the `mapping.ipynb <https://github.com/edsml-yc4523/irp_updated/blob/main/notebook/model_inference.ipynb>`_. The excel files used in this notebook and the generated map can be seen in the `example/map <https://github.com/edsml-yc4523/irp_updated/blob/main/example/map>`_ folder.
+
+If you want to see more map visualization results, you can refer to the `folium_map <https://github.com/edsml-yc4523/irp_updated/blob/main/folium_map>`_ folder.

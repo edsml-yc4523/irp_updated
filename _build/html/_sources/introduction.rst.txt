@@ -1,0 +1,13 @@
+Introduction
+============
+
+**Sentinel Segmentation** is a Python package specifically designed for segmenting coastal infrastructure, such as harbours, jetties, and resorts, from Sentinel-2 remote sensing images using deep learning models with PyTorch. 
+
+This package provides tools for:
+
+- **Data Processing**: Efficiently handle and preprocess Sentinel-2 remote sensing images, preparing them for model training and inference.
+- **Model Training**: Train state-of-the-art deep learning models for segmentation tasks, with built-in support for architectures like U-Net, DeepLabV3+, and U-Net++.
+- **Evaluation**: Assess model performance using a variety of metrics, and visualize results to ensure accuracy and reliability.
+- **Visualization**: Generate interactive map visualizations using Folium, making it easier to interpret and present segmentation results.
+
+Sentinel Segmentation simplifies the process for researchers and developers to build, fine-tune, and deploy segmentation models tailored to the unique challenges of analyzing coastal environments.

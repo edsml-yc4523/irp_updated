@@ -1,0 +1,32 @@
+Installation
+============
+
+1. Prerequisites
+----------------
+
+Ensure you have **Python 3.6** or higher installed on your system.
+
+2. Installation Using `pip`
+----------------------------
+
+To install the package and its dependencies, follow these steps:
+
+1. Clone the repository from GitHub:
+
+    ```
+    git clone https://github.com/edsml-yc4523/irp_updated.git
+    ```
+
+2. Change to the package directory:
+
+    ```
+    cd sentinel_segmentation
+    ```
+
+3. Install the package using `pip`:
+
+    ```
+    pip install .
+    ```
+
+Once these steps are completed, the package and its dependencies will be installed and ready to use.

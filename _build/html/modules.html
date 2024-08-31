@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modules &mdash; Sentinel Segmentation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Quick start" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Sentinel Segmentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#prerequisites">1. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-using-pip">2. Installation Using <cite>pip</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#prepare-your-dataset">1. Prepare your dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#model-training-and-evaluation">2. Model training and evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#model-inference">3. Model inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#folium-visualization">4. Folium visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-sentinel_segmentation">sentinel_segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sentinel-segmentation-data-loader">sentinel_segmentation.data_loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sentinel_segmentation.download.download_files">sentinel_segmentation.download</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.download.download_files.authenticate_gdrive"><code class="docutils literal notranslate"><span class="pre">authenticate_gdrive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.download.download_files.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.download.download_files.download_folder"><code class="docutils literal notranslate"><span class="pre">download_folder()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sentinel_segmentation.models.Deeplabv3plus_resnet50">sentinel_segmentation.models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout"><code class="docutils literal notranslate"><span class="pre">DeepLabV3Plus_resnet50WithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout.forward"><code class="docutils literal notranslate"><span class="pre">DeepLabV3Plus_resnet50WithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout"><code class="docutils literal notranslate"><span class="pre">UnetResnet34WithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout.forward"><code class="docutils literal notranslate"><span class="pre">UnetResnet34WithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.models.unet_resnet50.UnetWithDropout"><code class="docutils literal notranslate"><span class="pre">UnetWithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.models.unet_resnet50.UnetWithDropout.forward"><code class="docutils literal notranslate"><span class="pre">UnetWithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout"><code class="docutils literal notranslate"><span class="pre">UnetPlusPlusResnet50WithDropout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout.forward"><code class="docutils literal notranslate"><span class="pre">UnetPlusPlusResnet50WithDropout.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sentinel_segmentation.loss_function.losses">sentinel_segmentation.loss_function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.loss_function.losses.CombinedLoss"><code class="docutils literal notranslate"><span class="pre">CombinedLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.loss_function.losses.CombinedLoss.forward"><code class="docutils literal notranslate"><span class="pre">CombinedLoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.loss_function.losses.DiceLoss"><code class="docutils literal notranslate"><span class="pre">DiceLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.loss_function.losses.DiceLoss.forward"><code class="docutils literal notranslate"><span class="pre">DiceLoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.loss_function.losses.FocalLoss"><code class="docutils literal notranslate"><span class="pre">FocalLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentinel_segmentation.loss_function.losses.FocalLoss.forward"><code class="docutils literal notranslate"><span class="pre">FocalLoss.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sentinel-segmentation-training">sentinel_segmentation.training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sentinel-segmentation-evaluation">sentinel_segmentation.evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sentinel-segmentation-visualization">sentinel_segmentation.visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sentinel_segmentation.image_acquisition.earth_engine">sentinel_segmentation.image_acquisition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.image_acquisition.earth_engine.export_images"><code class="docutils literal notranslate"><span class="pre">export_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.image_acquisition.earth_engine.get_images"><code class="docutils literal notranslate"><span class="pre">get_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sentinel_segmentation.image_acquisition.earth_engine.initialize_earth_engine"><code class="docutils literal notranslate"><span class="pre">initialize_earth_engine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sentinel-segmentation-image-processing">sentinel_segmentation.image_processing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sentinel Segmentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h1>
+<p>The <cite>sentinel_segmentation</cite> package is composed of several key modules, each designed to handle different aspects of the segmentation workflow. This documentation provides an overview of these modules, along with their functions and classes.</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="module-sentinel_segmentation">
+<span id="sentinel-segmentation"></span><h2>sentinel_segmentation<a class="headerlink" href="#module-sentinel_segmentation" title="Link to this heading"></a></h2>
+</section>
+<section id="sentinel-segmentation-data-loader">
+<h2>sentinel_segmentation.data_loader<a class="headerlink" href="#sentinel-segmentation-data-loader" title="Link to this heading"></a></h2>
+</section>
+<section id="module-sentinel_segmentation.download.download_files">
+<span id="sentinel-segmentation-download"></span><h2>sentinel_segmentation.download<a class="headerlink" href="#module-sentinel_segmentation.download.download_files" title="Link to this heading"></a></h2>
+<p>Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sentinel_segmentation.download.download_files.authenticate_gdrive">
+<span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.download.download_files.</span></span><span class="sig-name descname"><span class="pre">authenticate_gdrive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">credentials_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/download/download_files.html#authenticate_gdrive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.download.download_files.authenticate_gdrive" title="Link to this definition"></a></dt>
+<dd><p>Authenticate and create a Google Drive service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>credentials_path</strong> (<em>str</em>) – The path to the Google API credentials JSON file.</p></li>
+<li><p><strong>token_path</strong> (<em>str</em>) – The path to the token JSON file for storing user credentials.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A resource object with methods for
+interacting with the service.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>googleapiclient.discovery.Resource</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the authentication process fails for any reason.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sentinel_segmentation.download.download_files.download_file">
+<span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.download.download_files.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/download/download_files.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.download.download_files.download_file" title="Link to this definition"></a></dt>
+<dd><p>Download a single file from Google Drive.</p>
+<p>Given a file ID, this function downloads the file from Google Drive and
+saves it to the specified local path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>service</strong> (<em>googleapiclient.discovery.Resource</em>) – The authenticated
+Google Drive service instance.</p></li>
+<li><p><strong>file_id</strong> (<em>str</em>) – The ID of the file to download.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – The local path where the file should be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>googleapiclient.errors.HttpError</strong> – If there is an issue with the</p></li>
+<li><p><strong>HTTP request to the Google Drive API.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sentinel_segmentation.download.download_files.download_folder">
+<span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.download.download_files.</span></span><span class="sig-name descname"><span class="pre">download_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/download/download_files.html#download_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.download.download_files.download_folder" title="Link to this definition"></a></dt>
+<dd><p>Download all files from a Google Drive folder.</p>
+<p>This function downloads all files from a specified Google Drive folder,
+preserving the folder structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>service</strong> (<em>googleapiclient.discovery.Resource</em>) – The authenticated
+Google Drive service instance.</p></li>
+<li><p><strong>folder_id</strong> (<em>str</em>) – The ID of the folder to download.</p></li>
+<li><p><strong>destination</strong> (<em>str</em>) – The local directory where the folder contents
+should be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>googleapiclient.errors.HttpError</strong> – If there is an issue with the</p></li>
+<li><p><strong>HTTP request to the Google Drive API.</strong> – </p></li>
+<li><p><strong>OSError</strong> – If there is an issue creating the local directory structure.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sentinel_segmentation.models.Deeplabv3plus_resnet50">
+<span id="sentinel-segmentation-models"></span><h2>sentinel_segmentation.models<a class="headerlink" href="#module-sentinel_segmentation.models.Deeplabv3plus_resnet50" title="Link to this heading"></a></h2>
+<p>Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.models.Deeplabv3plus_resnet50.</span></span><span class="sig-name descname"><span class="pre">DeepLabV3Plus_resnet50WithDropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dropout_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/Deeplabv3plus_resnet50.html#DeepLabV3Plus_resnet50WithDropout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/Deeplabv3plus_resnet50.html#DeepLabV3Plus_resnet50WithDropout.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.Deeplabv3plus_resnet50.DeepLabV3Plus_resnet50WithDropout.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-sentinel_segmentation.models.unet_resnet34">Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.models.unet_resnet34.</span></span><span class="sig-name descname"><span class="pre">UnetResnet34WithDropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dropout_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/unet_resnet34.html#UnetResnet34WithDropout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/unet_resnet34.html#UnetResnet34WithDropout.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.unet_resnet34.UnetResnet34WithDropout.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-sentinel_segmentation.models.unet_resnet50">Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.unet_resnet50.UnetWithDropout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.models.unet_resnet50.</span></span><span class="sig-name descname"><span class="pre">UnetWithDropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dropout_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/unet_resnet50.html#UnetWithDropout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.unet_resnet50.UnetWithDropout" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.unet_resnet50.UnetWithDropout.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/unet_resnet50.html#UnetWithDropout.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.unet_resnet50.UnetWithDropout.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-sentinel_segmentation.models.unetplusplus_resnet50">Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.models.unetplusplus_resnet50.</span></span><span class="sig-name descname"><span class="pre">UnetPlusPlusResnet50WithDropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dropout_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/unetplusplus_resnet50.html#UnetPlusPlusResnet50WithDropout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/models/unetplusplus_resnet50.html#UnetPlusPlusResnet50WithDropout.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.models.unetplusplus_resnet50.UnetPlusPlusResnet50WithDropout.forward" title="Link to this definition"></a></dt>
+<dd><p>Forward pass of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Input tensor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output tensor after segmentation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-sentinel_segmentation.loss_function.losses">
+<span id="sentinel-segmentation-loss-function"></span><h2>sentinel_segmentation.loss_function<a class="headerlink" href="#module-sentinel_segmentation.loss_function.losses" title="Link to this heading"></a></h2>
+<p>Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.loss_function.losses.CombinedLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.loss_function.losses.</span></span><span class="sig-name descname"><span class="pre">CombinedLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight_dice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_focal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dice_smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focal_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focal_gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_dice_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_focal_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_focal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/loss_function/losses.html#CombinedLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.loss_function.losses.CombinedLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.loss_function.losses.CombinedLoss.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/loss_function/losses.html#CombinedLoss.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.loss_function.losses.CombinedLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Calculates the combined loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Predicted probabilities.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Combined loss value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.loss_function.losses.DiceLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.loss_function.losses.</span></span><span class="sig-name descname"><span class="pre">DiceLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/loss_function/losses.html#DiceLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.loss_function.losses.DiceLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.loss_function.losses.DiceLoss.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/loss_function/losses.html#DiceLoss.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.loss_function.losses.DiceLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Calculates the Dice loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Predicted probabilities.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dice loss value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sentinel_segmentation.loss_function.losses.FocalLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.loss_function.losses.</span></span><span class="sig-name descname"><span class="pre">FocalLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/loss_function/losses.html#FocalLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.loss_function.losses.FocalLoss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sentinel_segmentation.loss_function.losses.FocalLoss.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/loss_function/losses.html#FocalLoss.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.loss_function.losses.FocalLoss.forward" title="Link to this definition"></a></dt>
+<dd><p>Calculates the Focal loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Predicted probabilities.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Focal loss value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="sentinel-segmentation-training">
+<h2>sentinel_segmentation.training<a class="headerlink" href="#sentinel-segmentation-training" title="Link to this heading"></a></h2>
+</section>
+<section id="sentinel-segmentation-evaluation">
+<h2>sentinel_segmentation.evaluation<a class="headerlink" href="#sentinel-segmentation-evaluation" title="Link to this heading"></a></h2>
+</section>
+<section id="sentinel-segmentation-visualization">
+<h2>sentinel_segmentation.visualization<a class="headerlink" href="#sentinel-segmentation-visualization" title="Link to this heading"></a></h2>
+</section>
+<section id="module-sentinel_segmentation.image_acquisition.earth_engine">
+<span id="sentinel-segmentation-image-acquisition"></span><h2>sentinel_segmentation.image_acquisition<a class="headerlink" href="#module-sentinel_segmentation.image_acquisition.earth_engine" title="Link to this heading"></a></h2>
+<p>Author: Yibing Chen
+GitHub username: edsml-yc4523</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sentinel_segmentation.image_acquisition.earth_engine.export_images">
+<span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.image_acquisition.earth_engine.</span></span><span class="sig-name descname"><span class="pre">export_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/image_acquisition/earth_engine.html#export_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.image_acquisition.earth_engine.export_images" title="Link to this definition"></a></dt>
+<dd><p>Export images from an Earth Engine image collection to Google Drive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection</strong> (<em>ee.ImageCollection</em>) – The image collection to export.</p></li>
+<li><p><strong>region</strong> (<em>ee.Geometry</em>) – The region of interest for image export.</p></li>
+<li><p><strong>folder_name</strong> (<em>str</em>) – The name of the folder in Google Drive to save</p></li>
+<li><p><strong>images.</strong> (<em>the</em>)</p></li>
+<li><p><strong>area_name</strong> (<em>str</em>) – A prefix for the exported image file names.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – The scale in meters for export resolution. Defaults to 10.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Number of images to export in a batch. Defaults to 20.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sentinel_segmentation.image_acquisition.earth_engine.get_images">
+<span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.image_acquisition.earth_engine.</span></span><span class="sig-name descname"><span class="pre">get_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2014-01-01'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2024-05-31'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/image_acquisition/earth_engine.html#get_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.image_acquisition.earth_engine.get_images" title="Link to this definition"></a></dt>
+<dd><p>Retrieve a collection of satellite images from the Sentinel-2 dataset.</p>
+<p>Filters images based on the specified geographic region, date range,
+and cloud cover percentage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat1</strong> (<em>float</em>) – Latitude of the first corner of the bounding box.</p></li>
+<li><p><strong>lon1</strong> (<em>float</em>) – Longitude of the first corner of the bounding box.</p></li>
+<li><p><strong>lat2</strong> (<em>float</em>) – Latitude of the opposite corner of the bounding box.</p></li>
+<li><p><strong>lon2</strong> (<em>float</em>) – Longitude of the opposite corner of the bounding box.</p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – Start date for the image collection (YYYY-MM-DD).</p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – End date for the image collection (YYYY-MM-DD).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Processed image collection containing selected
+bands and additional computed indices (NDVI, NDWI).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ee.ImageCollection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sentinel_segmentation.image_acquisition.earth_engine.initialize_earth_engine">
+<span class="sig-prename descclassname"><span class="pre">sentinel_segmentation.image_acquisition.earth_engine.</span></span><span class="sig-name descname"><span class="pre">initialize_earth_engine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sentinel_segmentation/image_acquisition/earth_engine.html#initialize_earth_engine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sentinel_segmentation.image_acquisition.earth_engine.initialize_earth_engine" title="Link to this definition"></a></dt>
+<dd><p>Initialize the Google Earth Engine.</p>
+<p>Attempts to authenticate and initialize the Earth Engine. If
+initialization fails, an exception is raised.</p>
+</dd></dl>
+
+</section>
+<section id="sentinel-segmentation-image-processing">
+<h2>sentinel_segmentation.image_processing<a class="headerlink" href="#sentinel-segmentation-image-processing" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yibing Chen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
