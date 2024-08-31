@@ -141,7 +141,7 @@ You can install the package and its dependencies using the `setup.py`:
 
 ```sh
 git clone https://github.com/edsml-yc4523/irp_updated.git
-cd sentinel_segmentation
+cd irp_updated
 pip install .
 ```
 
